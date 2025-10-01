@@ -22,43 +22,63 @@ nav a:focus {
 
 /*Write selector/rule property to style all elements when in focus*/
 
-:focus:not(nav a) {
+*:focus {
      border: 5px dashed green;
 }
      
 
 /*Write selector/rule property to style the container */
-.container {
+#main.container {
      display: grid;
-     grid-template-columns: auto auto auto auto auto;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
      gap: 13px 13px;
 }
 
 /*Write selector/rule property to add the background image to the first div in the grid and place it in the grid. */
-.container > :first-child {
+#main.container > :first-child {
      grid-column: 1/-1;
      background-image: url("../images/header.jpg");
 }
+
+img{
+     width: 100%;}
 
 /* Steps 6 and 7: Write the selector/rule properties to  place the next five elements in the next
  five rows in the grid. */
 
       /*This will be a lot of rules.... but be strategic and combine selectors*/
 
-.accounts.text-block,
-.onlinebanking.text-block,
-.security.text-block,
-.loans.text-block,
-.contact.text-block {
+
+.accounts { 
+  grid-row-start: 2;
   grid-column: 2 / span 3;  
 }
 
+.onlinebanking { 
+  grid-row-start: 3;
+  grid-column: 2 / span 3;
+}
 
- .accounts.text-block, .accounts-image { grid-row: 2; }
-.onlinebanking.text-block, .onlinebanking-image { grid-row: 3; }
-.security.text-block, .security-image { grid-row: 4; }
-.loans.text-block, .loans-image { grid-row: 5; }
-.contact.text-block, .contact-image { grid-row: 6; }
+.security { 
+  grid-row-start: 4;
+  grid-column: 2 / span 3;
+}
+
+.loans { 
+  grid-row-start: 5;
+  grid-column: 2 / span 3;
+}
+
+.contact { 
+  grid-row-start: 6;
+  grid-column: 2 / span 3;
+}
+
+.accounts-image { grid-row: 2; }
+.onlinebanking-image { grid-row: 3; }
+.security-image { grid-row: 4; }
+.loans-image { grid-row: 5; }
+.contact-image { grid-row: 6; }
 
 .accounts-image,
 .onlinebanking-image,
@@ -71,37 +91,61 @@ nav a:focus {
   object-fit: cover;      
 }
 
-/* .accounts-image img,
-.onlinebanking-image img,
-.security-image img,
-.loans-image img,
-.contact-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: none;
-} */
- .accounts-image { grid-row: 2; }
-.onlinebanking-image { grid-row: 3; }
-.security-image { grid-row: 4; }
-.loans-image { grid-row: 5; }
-.contact-image { grid-row: 6; } 
 
  /* Step 8: Write the selector/rule property to style the .text-block class. */
+.text-block { 
+     justify-content: center;    
+  align-items: center;        
+  text-align: center; 
+}
 
+.text-block ul,
+.text-block ol {
+  text-align: left;         
+  margin: 0 auto;            
+}
 
 /* Add your media query here */
-/* @media screen and (width >= 825px) { 
+ @media screen and (width >= 825px) {
 
   /* Step 10: Write the selector/rule property to style the nav element */
-
+nav {
+     display: grid;
+justify-content: right;
+padding: 35px 0 35px 0;
+}
  
   /* Step 11: Write the selector/rule property to update the .container class */
 
+#main.container {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 
   /* Steps 12 - 15: Update the grid-column property of the grid's children (where-needed)*/
+.accounts, .security, .contact {
+     grid-column: 4 / span 3;
+}
 
+.onlinebanking, .loans {
+     grid-column: 2 / span 3;
+}
 
+.accounts-image, .security-image, .contact-image {
+     grid-column: 1 / span 5;
+     width: 100%;
+}
 
+.onlinebanking-image, .loans-image{
+     grid-column: 3 / span 5;
+     width: 100%;
+}
  /* Step 16:Write the selector/rule property to update the .text-block class */
-
  
+.text-block { 
+     max-height: 635px;
+     overflow: scroll;
+}
+
+ }
